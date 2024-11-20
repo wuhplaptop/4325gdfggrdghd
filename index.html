@@ -6,12 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bradley's Lawn Care</title>
     <meta name="description" content="Eco-friendly and professional lawn care services in Montcalm County. Contact Bradley's Lawn Care for quality landscaping solutions.">
+    
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@600&display=swap" rel="stylesheet">
+    
     <!-- Font Awesome for Social Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
         integrity="sha512-Fo3rlrZj/k7ujTnHq6b0zJtL1IY0cKzZ2FJ+KfE58mTvjft/8Gg2RjL57vG2LAmHnduIslYyrkjoVj4c6Zf5kA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Favicon Placeholder -->
+    <link id="favicon" rel="icon" href="" type="image/x-icon">
+    
+    <!-- Open Graph Meta Tags for Social Sharing -->
+    <meta property="og:title" content="Bradley's Lawn Care">
+    <meta property="og:description" content="Eco-friendly and professional lawn care services in Montcalm County.">
+    <meta property="og:image" content="" id="og-image">
+    <meta property="og:url" content="https://yourdomain.com">
+    <meta property="og:type" content="website">
+    
     <style>
         /* CSS Variables for Easy Theme Management */
         :root {
@@ -58,14 +71,26 @@
         nav {
             background-color: var(--secondary-color);
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            padding: 15px 0;
+            padding: 0 20px;
             position: sticky;
             top: 0;
             z-index: 1000;
             box-shadow: 0 2px 4px var(--shadow-color);
             height: var(--nav-height);
+        }
+
+        nav .nav-left {
+            display: flex;
+            align-items: center;
+        }
+
+        nav .nav-left img#logo {
+            height: 40px;
+            width: auto;
+            margin-right: 20px;
+            cursor: pointer;
         }
 
         nav .nav-links {
@@ -91,7 +116,7 @@
 
         /* Header (Home Section) */
         header {
-            background-image: url('https://via.placeholder.com/1500x500'); /* Replace with your actual image */
+            /* Background image will be set dynamically via JavaScript */
             background-size: cover;
             background-position: center;
             color: var(--header-text-color);
@@ -132,6 +157,7 @@
         header p {
             font-size: 1.3em;
             margin-bottom: 30px;
+            color: var(--header-text-color); /* Ensure text is white */
         }
 
         header a.cta-button {
@@ -502,6 +528,10 @@
 <body>
     <!-- Navigation -->
     <nav>
+        <div class="nav-left">
+            <img id="logo" src="" alt="Bradley's Lawn Care Logo">
+            <a href="#" class="nav-brand" data-target="home" style="font-size:1.2em; color: var(--header-text-color); text-decoration:none; font-weight:bold;">Bradley's Lawn Care</a>
+        </div>
         <div class="nav-links">
             <a href="#" class="nav-link active" data-target="home">Home</a>
             <a href="#" class="nav-link" data-target="services">Our Services</a>
@@ -512,7 +542,7 @@
 
     <!-- Home Section -->
     <section id="home" class="content-section active">
-        <header>
+        <header id="home-header">
             <h1>Bradley's Lawn Care</h1>
             <p>Eco-friendly landscaping in Montcalm County</p>
             <a href="#" class="cta-button" data-target="contact">Get in Touch</a>
@@ -593,50 +623,15 @@
     <!-- Gallery & Service Areas Combined Section -->
     <section id="gallery-service-areas" class="content-section">
         <h2>Gallery & Service Areas</h2>
-        <div class="gallery-service-areas">
-            <!-- Gallery Cards -->
+        <div class="gallery-service-areas" id="gallery-service-container">
+            <!-- Gallery Cards will be populated via JavaScript -->
+            <!-- Example Gallery Card Structure:
             <div class="gallery-card">
-                <img src="https://via.placeholder.com/300x200" alt="Residential Lawn Makeover">
-                <h3>Residential Lawn Makeover</h3>
-                <p>Transforming residential yards into lush, green spaces.</p>
+                <img src="..." alt="...">
+                <h3>Title</h3>
+                <p>Description</p>
             </div>
-            <div class="gallery-card">
-                <img src="https://via.placeholder.com/300x200" alt="Commercial Landscaping">
-                <h3>Commercial Landscaping</h3>
-                <p>Professional landscaping services for commercial properties.</p>
-            </div>
-            <div class="gallery-card">
-                <img src="https://via.placeholder.com/300x200" alt="Garden Design">
-                <h3>Garden Design</h3>
-                <p>Creating stunning garden layouts tailored to your preferences.</p>
-            </div>
-            <div class="gallery-card">
-                <img src="https://via.placeholder.com/300x200" alt="Seasonal Cleanup">
-                <h3>Seasonal Cleanup</h3>
-                <p>Keeping your outdoor spaces clean and beautiful throughout the seasons.</p>
-            </div>
-
-            <!-- Service Areas Cards -->
-            <div class="area-card">
-                <h3>Montcalm County</h3>
-                <p>Serving the entire Montcalm County with top-notch lawn care and landscaping services.</p>
-            </div>
-            <div class="area-card">
-                <h3>Emmet County</h3>
-                <p>Providing eco-friendly landscaping solutions to homes and businesses in Emmet County.</p>
-            </div>
-            <div class="area-card">
-                <h3>Ingham County</h3>
-                <p>Extending our quality services to Ingham County, ensuring beautiful lawns across the region.</p>
-            </div>
-            <div class="area-card">
-                <h3>Lapeer County</h3>
-                <p>Covering Lapeer County with dedicated and reliable lawn care professionals.</p>
-            </div>
-            <div class="area-card">
-                <h3>Other Surrounding Areas</h3>
-                <p>If you're outside our listed areas, contact us to see how we can assist you with your lawn care needs.</p>
-            </div>
+            -->
         </div>
     </section>
 
@@ -668,11 +663,85 @@
         <p>&copy; 2024 Bradley's Lawn Care. All rights reserved.</p>
     </footer>
 
-    <!-- JavaScript for Navigation and FAQ Accordion -->
+    <!-- JavaScript for Navigation, FAQ Accordion, Dynamic Image Loading, and Gallery Population -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const navLinks = document.querySelectorAll('.nav-link');
             const sections = document.querySelectorAll('.content-section');
+
+            // Function to load config.json and apply images
+            fetch('config.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(config => {
+                    // Set the header background image
+                    const header = document.getElementById('home-header');
+                    if (config.headerImage) {
+                        header.style.backgroundImage = `url('${config.headerImage}')`;
+                    } else {
+                        console.warn('No headerImage found in config.json');
+                    }
+
+                    // Set the logo image in nav
+                    const logo = document.getElementById('logo');
+                    if (config.logoImage) {
+                        logo.src = config.logoImage;
+                    } else {
+                        console.warn('No logoImage found in config.json');
+                    }
+
+                    // Set the favicon
+                    const favicon = document.getElementById('favicon');
+                    if (config.faviconImage) {
+                        favicon.href = config.faviconImage;
+                    } else {
+                        console.warn('No faviconImage found in config.json');
+                    }
+
+                    // Set the Open Graph share image
+                    const ogImage = document.getElementById('og-image');
+                    if (config.shareImage) {
+                        ogImage.content = config.shareImage;
+                    } else {
+                        console.warn('No shareImage found in config.json');
+                    }
+
+                    // Populate the Gallery Section
+                    const galleryContainer = document.getElementById('gallery-service-container');
+                    if (config.galleryImages && Array.isArray(config.galleryImages)) {
+                        config.galleryImages.forEach(image => {
+                            const galleryCard = document.createElement('div');
+                            galleryCard.classList.add('gallery-card');
+
+                            const img = document.createElement('img');
+                            img.src = image.src;
+                            img.alt = image.alt || 'Gallery Image';
+                            img.style.width = '100%';
+                            img.style.borderRadius = '10px';
+
+                            const title = document.createElement('h3');
+                            title.textContent = image.alt || 'Gallery Title';
+
+                            const description = document.createElement('p');
+                            description.textContent = image.description || '';
+
+                            galleryCard.appendChild(img);
+                            galleryCard.appendChild(title);
+                            galleryCard.appendChild(description);
+
+                            galleryContainer.appendChild(galleryCard);
+                        });
+                    } else {
+                        console.warn('No galleryImages found in config.json');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error loading config.json:', error);
+                });
 
             // Navigation Click Event
             navLinks.forEach(link => {
@@ -698,6 +767,11 @@
 
                     // Add active class to clicked nav link
                     link.classList.add('active');
+
+                    // If the logo is clicked, navigate to home
+                    if (link.getAttribute('data-target') === 'home') {
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
 
                     // Update URL hash without scrolling
                     history.pushState(null, null, `#${target}`);
@@ -757,6 +831,18 @@
                     }
                 });
             });
+
+            // Make the logo clickable to navigate to Home
+            const logo = document.getElementById('logo');
+            if (logo) {
+                logo.addEventListener('click', () => {
+                    // Trigger the Home navigation
+                    const homeLink = document.querySelector('a[data-target="home"]');
+                    if (homeLink) {
+                        homeLink.click();
+                    }
+                });
+            }
         });
     </script>
 </body>

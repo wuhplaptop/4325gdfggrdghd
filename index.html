@@ -6,33 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bradley's Lawn Care</title>
     <meta name="description" content="Eco-friendly and professional lawn care services in Montcalm County. Contact Bradley's Lawn Care for quality landscaping solutions.">
-    
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@600&display=swap" rel="stylesheet">
-    
+
     <!-- Font Awesome for Social Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
         integrity="sha512-Fo3rlrZj/k7ujTnHq6b0zJtL1IY0cKzZ2FJ+KfE58mTvjft/8Gg2RjL57vG2LAmHnduIslYyrkjoVj4c6Zf5kA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
+
     <!-- Favicon Placeholder -->
     <link id="favicon" rel="icon" href="" type="image/x-icon">
-    
+
     <!-- Open Graph Meta Tags for Social Sharing -->
     <meta property="og:title" content="Bradley's Lawn Care">
     <meta property="og:description" content="Eco-friendly and professional lawn care services in Montcalm County.">
     <meta property="og:image" content="" id="og-image">
     <meta property="og:url" content="https://yourdomain.com">
     <meta property="og:type" content="website">
-    
+
     <style>
         /* CSS Variables for Easy Theme Management */
         :root {
-            --primary-color: #2e8b57; /* Sea Green */
-            --secondary-color: #3e2723; /* Dark Brown */
-            --accent-color: #ffcc00; /* Amber */
-            --background-color: #f5f5f5; /* Light Gray */
-            --text-color: #333333; /* Dark Gray */
+            --primary-color: #2e8b57; 
+            --secondary-color: #3e2723; 
+            --accent-color: #ffcc00; 
+            --background-color: #f5f5f5; 
+            --text-color: #333333; 
             --header-text-color: #ffffff;
             --card-background: #ffffff;
             --shadow-color: rgba(0, 0, 0, 0.1);
@@ -93,12 +93,38 @@
             cursor: pointer;
         }
 
-        nav .nav-links {
+        nav .nav-brand {
+            font-size: 1.2em;
+            color: var(--header-text-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            width: 30px;
+            height: 25px;
+            justify-content: space-between;
+        }
+
+        .hamburger div {
+            width: 100%;
+            height: 4px;
+            background-color: var(--header-text-color);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        /* Navigation Links */
+        .nav-links {
             display: flex;
             gap: 30px;
         }
 
-        nav a {
+        .nav-links a {
             color: var(--header-text-color);
             text-decoration: none;
             font-size: 1.1em;
@@ -108,15 +134,45 @@
             position: relative;
         }
 
-        nav a:hover,
-        nav a.active {
+        .nav-links a:hover,
+        .nav-links a.active {
             color: var(--accent-color);
             background-color: rgba(255, 204, 0, 0.2);
         }
 
+        /* Mobile Navigation */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: var(--nav-height);
+                left: 0;
+                width: 100%;
+                background-color: var(--secondary-color);
+                flex-direction: column;
+                align-items: center;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease-in-out;
+            }
+
+            .nav-links.active {
+                max-height: 500px; 
+            }
+
+            .nav-links a {
+                padding: 15px;
+                width: 100%;
+                text-align: center;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+            }
+        }
+
         /* Header (Home Section) */
         header {
-            /* Background image will be set dynamically via JavaScript */
             background-size: cover;
             background-position: center;
             color: var(--header-text-color);
@@ -136,7 +192,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: var(--overlay-color); /* Overlay for better text readability */
+            background-color: var(--overlay-color); 
             z-index: 1;
         }
 
@@ -157,7 +213,7 @@
         header p {
             font-size: 1.3em;
             margin-bottom: 30px;
-            color: var(--header-text-color); /* Ensure text is white */
+            color: var(--header-text-color); 
         }
 
         header a.cta-button {
@@ -172,17 +228,16 @@
         }
 
         header a.cta-button:hover {
-            background-color: #276749; /* Darker Sea Green */
+            background-color: #276749; 
             transform: translateY(-3px);
         }
 
-        /* Content Sections */
         .content-section {
             max-width: var(--max-width);
             margin: 60px auto;
             padding: 0 20px;
             text-align: center;
-            display: none; /* Hidden by default */
+            display: none; 
             animation: fadeIn 0.5s ease-in-out;
         }
 
@@ -205,19 +260,17 @@
             text-align: left;
         }
 
-        /* About Us Section */
         .about-us {
             max-width: var(--max-width);
             margin: 40px auto;
-            text-align: center; /* Centers the text within the About Us section */
+            text-align: center; 
         }
 
-        /* Services and Gallery Sections */
         .services,
         .gallery-service-areas {
             display: flex;
             flex-wrap: wrap;
-            justify-content: center; /* Centers the service cards */
+            justify-content: center; 
             gap: 30px;
         }
 
@@ -266,23 +319,22 @@
             line-height: 1.6em;
         }
 
-        /* FAQ Accordion Styles */
         .faq-card {
             cursor: pointer;
             position: relative;
-            padding: 15px 30px; /* Reduced padding for shorter height */
+            padding: 15px 30px; 
             background-color: var(--accordion-background);
             border: 1px solid var(--secondary-color);
             border-radius: 10px;
-            width: 100%; /* Stretches the FAQ card to full width of its container */
-            max-width: 800px; /* Optional: Set a max-width for better readability on large screens */
-            margin: 10px auto; /* Centers the FAQ box horizontally */
-            text-align: left; /* Aligns text to the left for readability */
+            width: 100%; 
+            max-width: 800px; 
+            margin: 10px auto; 
+            text-align: left; 
             box-shadow: 0 4px 6px var(--shadow-color);
             transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease;
             display: flex;
             flex-direction: column;
-            justify-content: center; /* Vertically centers content within the box */
+            justify-content: center; 
         }
 
         .faq-card h3 {
@@ -290,13 +342,13 @@
             font-size: 1.4em;
             font-family: 'Montserrat', sans-serif;
             color: var(--secondary-color);
-            text-align: left; /* Keeps the title aligned to the left */
+            text-align: left; 
         }
 
         .faq-answer {
             display: none;
             margin-top: 10px;
-            text-align: left; /* Keeps the answer text aligned properly for readability */
+            text-align: left; 
         }
 
         .faq-card.active .faq-answer {
@@ -305,7 +357,7 @@
 
         .faq-card:hover {
             background-color: var(--accordion-hover);
-            transform: translateY(-2px); /* Adds a subtle hover effect */
+            transform: translateY(-2px); 
         }
 
         .faq-card::after {
@@ -322,16 +374,14 @@
             content: '-';
         }
 
-        /* Ensure proper centering and responsiveness */
         .faqs {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 15px; /* Spacing between FAQ boxes */
+            gap: 15px; 
             margin-top: 30px;
         }
 
-        /* Gallery & Service Areas Combined Section */
         .gallery-service-areas {
             max-width: var(--max-width);
             margin: 40px auto;
@@ -347,15 +397,23 @@
             width: 45%;
             display: flex;
             flex-direction: column;
-            align-items: center; /* Centers the content within gallery and area cards */
-            text-align: center; /* Centers the text within each card */
+            align-items: center; 
+            text-align: center; 
+        }
+
+        /* Responsive Images */
+        .gallery-card img,
+        .area-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
         }
 
         /* Contact Info */
         .contact-info {
             max-width: var(--max-width);
             margin: 20px auto;
-            text-align: center; /* Centers the contact information */
+            text-align: center; 
             padding: 20px;
             background-color: var(--card-background);
             border: 1px solid var(--secondary-color);
@@ -384,7 +442,7 @@
             color: var(--header-text-color);
             text-align: center;
             padding: 30px 20px;
-            margin-top: auto; /* Pushes footer to the bottom */
+            margin-top: auto; 
         }
 
         footer a {
@@ -394,7 +452,7 @@
         }
 
         footer a:hover {
-            color: #ffd700; /* Lighter Amber */
+            color: #ffd700; 
         }
 
         footer .social-icons {
@@ -406,7 +464,6 @@
             font-size: 1.5em;
         }
 
-        /* Animations */
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -417,7 +474,6 @@
             }
         }
 
-        /* Responsive Design */
         @media (max-width: 1024px) {
             header {
                 padding: 120px 20px;
@@ -530,7 +586,12 @@
     <nav>
         <div class="nav-left">
             <img id="logo" src="" alt="Bradley's Lawn Care Logo">
-            <a href="#" class="nav-brand" data-target="home" style="font-size:1.2em; color: var(--header-text-color); text-decoration:none; font-weight:bold;">Bradley's Lawn Care</a>
+            <a href="#" class="nav-brand" data-target="home">Bradley's Lawn Care</a>
+        </div>
+        <div class="hamburger" aria-label="Menu" aria-expanded="false" role="button" tabindex="0">
+            <div></div>
+            <div></div>
+            <div></div>
         </div>
         <div class="nav-links">
             <a href="#" class="nav-link active" data-target="home">Home</a>
@@ -587,7 +648,6 @@
         </div>
     </section>
 
-    <!-- Our Services Section -->
     <section id="services" class="content-section">
         <h2>Our Services</h2>
         <div class="services">
@@ -634,41 +694,63 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact" class="content-section">
         <h2>Contact Us</h2>
         <p>We're here to help you achieve the lawn of your dreams. Whether you have questions about our services, need a quote, or want to schedule an appointment, don't hesitate to reach out!</p>
 
         <div class="contact-info">
             <p><strong>Call Us Today:</strong></p>
-            <p><a href="tel:+16163858104">+1 616 385 8104</a></p>
-            <p><strong>Email:</strong> <a href="mailto:info@bradleyslawncare.com">info@bradleyslawncare.com</a></p>
+            <p><a href="tel:+19895729856">989 572 9856</a></p>
+            <p><strong>Email:</strong> 
+                <a href="mailto:daltonbradley17@gmail.com">daltonbradley17@gmail.com</a>, 
+                <a href="mailto:bradleyslawncare21@gmail.com">bradleyslawncare21@gmail.com</a>
+            </p>
             <p><strong>Address:</strong> 123 Greenway Drive, Montcalm County, MI 48858</p>
             <p><em>We're available Monday to Friday, 8 AM to 6 PM.</em></p>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <p><strong>Contact Us:</strong></p>
-        <p>Phone: <a href="tel:+16163858104">+1 616 385 8104</a></p>
-        <p>Email: <a href="mailto:info@bradleyslawncare.com">info@bradleyslawncare.com</a></p>
+        <p>Phone: <a href="tel:+19895729856">989 572 9856</a></p>
+        <p>Email: 
+            <a href="mailto:daltonbradley17@gmail.com">daltonbradley17@gmail.com</a>, 
+            <a href="mailto:bradleyslawncare21@gmail.com">bradleyslawncare21@gmail.com</a>
+        </p>
         <div class="social-icons">
             <a href="https://facebook.com/bradleyslawncare" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
             <a href="https://instagram.com/bradleyslawncare" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
             <a href="https://twitter.com/bradleyslawncare" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-            <!-- Add more social icons as needed -->
         </div>
         <p>&copy; 2024 Bradley's Lawn Care. All rights reserved.</p>
     </footer>
 
-    <!-- JavaScript for Navigation, FAQ Accordion, Dynamic Image Loading, and Gallery Population -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const navLinks = document.querySelectorAll('.nav-link');
             const sections = document.querySelectorAll('.content-section');
+            const hamburger = document.querySelector('.hamburger');
+            const navLinksContainer = document.querySelector('.nav-links');
 
-            // Function to load config.json and apply images
+            const toggleMenu = () => {
+                const isExpanded = hamburger.getAttribute('aria-expanded') === 'true' || false;
+                hamburger.setAttribute('aria-expanded', !isExpanded);
+                navLinksContainer.classList.toggle('active');
+            };
+
+            hamburger.addEventListener('click', toggleMenu);
+            hamburger.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    toggleMenu();
+                }
+            });
+
+            const closeMenu = () => {
+                navLinksContainer.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
+            };
+
             fetch('config.json')
                 .then(response => {
                     if (!response.ok) {
@@ -677,7 +759,6 @@
                     return response.json();
                 })
                 .then(config => {
-                    // Set the header background image
                     const header = document.getElementById('home-header');
                     if (config.headerImage) {
                         header.style.backgroundImage = `url('${config.headerImage}')`;
@@ -685,7 +766,6 @@
                         console.warn('No headerImage found in config.json');
                     }
 
-                    // Set the logo image in nav
                     const logo = document.getElementById('logo');
                     if (config.logoImage) {
                         logo.src = config.logoImage;
@@ -693,15 +773,12 @@
                         console.warn('No logoImage found in config.json');
                     }
 
-                    // Set the favicon
                     const favicon = document.getElementById('favicon');
                     if (config.faviconImage) {
                         favicon.href = config.faviconImage;
                     } else {
                         console.warn('No faviconImage found in config.json');
                     }
-
-                    // Set the Open Graph share image
                     const ogImage = document.getElementById('og-image');
                     if (config.shareImage) {
                         ogImage.content = config.shareImage;
@@ -709,7 +786,6 @@
                         console.warn('No shareImage found in config.json');
                     }
 
-                    // Populate the Gallery Section
                     const galleryContainer = document.getElementById('gallery-service-container');
                     if (config.galleryImages && Array.isArray(config.galleryImages)) {
                         config.galleryImages.forEach(image => {
@@ -742,42 +818,32 @@
                     console.error('Error loading config.json:', error);
                 });
 
-            // Navigation Click Event
             navLinks.forEach(link => {
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
                     const target = link.getAttribute('data-target');
-
-                    // Hide all sections
                     sections.forEach(section => {
                         section.classList.remove('active');
                     });
-
-                    // Remove active class from all nav links
                     navLinks.forEach(nav => {
                         nav.classList.remove('active');
                     });
-
-                    // Show target section
                     const targetSection = document.getElementById(target);
                     if (targetSection) {
                         targetSection.classList.add('active');
                     }
 
-                    // Add active class to clicked nav link
                     link.classList.add('active');
-
-                    // If the logo is clicked, navigate to home
                     if (link.getAttribute('data-target') === 'home') {
                         window.scrollTo({ top: 0, behavior: 'smooth' });
                     }
-
-                    // Update URL hash without scrolling
+                    if (navLinksContainer.classList.contains('active')) {
+                        closeMenu();
+                    }
                     history.pushState(null, null, `#${target}`);
                 });
             });
 
-            // Handle initial load with hash
             const initialHash = window.location.hash.substring(1);
             if (initialHash && document.getElementById(initialHash)) {
                 sections.forEach(section => {
@@ -793,15 +859,10 @@
                 });
             }
 
-            // FAQ Accordion Functionality
             const faqCards = document.querySelectorAll('.faq-card');
-
             faqCards.forEach(card => {
                 card.addEventListener('click', () => {
-                    // Toggle active class
                     card.classList.toggle('active');
-
-                    // Close other FAQs
                     faqCards.forEach(otherCard => {
                         if (otherCard !== card) {
                             otherCard.classList.remove('active');
@@ -810,7 +871,6 @@
                 });
             });
 
-            // Highlight active section based on scroll
             const sectionsList = document.querySelectorAll('section');
             const navLinksList = document.querySelectorAll('.nav-link');
 
@@ -831,11 +891,9 @@
                 });
             });
 
-            // Make the logo clickable to navigate to Home
             const logo = document.getElementById('logo');
             if (logo) {
                 logo.addEventListener('click', () => {
-                    // Trigger the Home navigation
                     const homeLink = document.querySelector('a[data-target="home"]');
                     if (homeLink) {
                         homeLink.click();

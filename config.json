@@ -1,3 +1,24 @@
 {
-    "headerImage": "https://create.vista.com/wp-content/uploads/2020/10/autumn-landscape-background.jpg"
+    "headerImage": "https://yourdomain.com/images/autumn-landscape-background.jpg",
+    "logoImage": "https://yourdomain.com/images/logo.png",
+    "faviconImage": "https://yourdomain.com/images/favicon.ico",
+    "shareImage": "https://yourdomain.com/images/share-image.jpg",
+    "galleryImages": [
+        {
+            "src": "https://yourdomain.com/images/gallery1.jpg",
+            "alt": "Residential Lawn Makeover"
+        },
+        {
+            "src": "https://yourdomain.com/images/gallery2.jpg",
+            "alt": "Commercial Landscaping"
+        },
+        {
+            "src": "https://yourdomain.com/images/gallery3.jpg",
+            "alt": "Garden Design"
+        },
+        {
+            "src": "https://yourdomain.com/images/gallery4.jpg",
+            "alt": "Seasonal Cleanup"
+        }
+    ]
 }

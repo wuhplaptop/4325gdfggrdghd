@@ -1,23 +1,23 @@
 {
-    "headerImage": "https://yourdomain.com/images/autumn-landscape-background.jpg",
-    "logoImage": "https://yourdomain.com/images/logo.png",
-    "faviconImage": "https://yourdomain.com/images/favicon.ico",
-    "shareImage": "https://yourdomain.com/images/share-image.jpg",
+    "headerImage": "https://cdn.create.vista.com/api/media/small/635487234/stock-photo-colorful-leaves-oak-wooden-table",
+    "logoImage": "https://cdn.create.vista.com/api/media/small/635487234/stock-photo-colorful-leaves-oak-wooden-table",
+    "faviconImage": "https://cdn.create.vista.com/api/media/small/635487234/stock-photo-colorful-leaves-oak-wooden-table",
+    "shareImage": "https://cdn.create.vista.com/api/media/small/635487234/stock-photo-colorful-leaves-oak-wooden-table",
     "galleryImages": [
         {
-            "src": "https://yourdomain.com/images/gallery1.jpg",
+            "src": "https://cdn.create.vista.com/api/media/small/635487234/stock-photo-colorful-leaves-oak-wooden-table",
             "alt": "Residential Lawn Makeover"
         },
         {
-            "src": "https://yourdomain.com/images/gallery2.jpg",
+            "src": "https://cdn.create.vista.com/api/media/small/635487234/stock-photo-colorful-leaves-oak-wooden-table",
             "alt": "Commercial Landscaping"
         },
         {
-            "src": "https://yourdomain.com/images/gallery3.jpg",
+            "src": "https://cdn.create.vista.com/api/media/small/635487234/stock-photo-colorful-leaves-oak-wooden-table",
             "alt": "Garden Design"
         },
         {
-            "src": "https://yourdomain.com/images/gallery4.jpg",
+            "src": "https://cdn.create.vista.com/api/media/small/635487234/stock-photo-colorful-leaves-oak-wooden-table",
             "alt": "Seasonal Cleanup"
         }
     ]

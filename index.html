@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bradley's Lawn Care</title>
+    <meta name="description" content="Eco-friendly and professional lawn care services in Montcalm County. Contact Bradley's Lawn Care for quality landscaping solutions.">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@600&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Social Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha512-Fo3rlrZj/k7ujTnHq6b0zJtL1IY0cKzZ2FJ+KfE58mTvjft/8Gg2RjL57vG2LAmHnduIslYyrkjoVj4c6Zf5kA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* CSS Variables for Easy Theme Management */
+        :root {
+            --primary-color: #2e8b57; /* Sea Green */
+            --secondary-color: #3e2723; /* Dark Brown */
+            --accent-color: #ffcc00; /* Amber */
+            --background-color: #f5f5f5; /* Light Gray */
+            --text-color: #333333; /* Dark Gray */
+            --header-text-color: #ffffff;
+            --card-background: #ffffff;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --overlay-color: rgba(0, 0, 0, 0.5);
+            --transition-speed: 0.3s;
+            --max-width: 1200px;
+            --nav-height: 60px;
+            --accordion-background: #ffffff;
+            --accordion-hover: rgba(46, 139, 87, 0.1);
+            --accordion-active: #e0f7fa;
+        }
+
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            height: 100%;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--secondary-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px var(--shadow-color);
+            height: var(--nav-height);
+        }
+
+        nav .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            color: var(--header-text-color);
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: color var(--transition-speed) ease, background-color var(--transition-speed) ease;
+            padding: 5px 15px;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: var(--accent-color);
+            background-color: rgba(255, 204, 0, 0.2);
+        }
+
+        /* Header (Home Section) */
+        header {
+            background-image: url('https://via.placeholder.com/1500x500'); /* Replace with your actual image */
+            background-size: cover;
+            background-position: center;
+            color: var(--header-text-color);
+            text-align: center;
+            padding: 150px 20px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--overlay-color); /* Overlay for better text readability */
+            z-index: 1;
+        }
+
+        header > * {
+            position: relative;
+            z-index: 2;
+            max-width: var(--max-width);
+            width: 100%;
+        }
+
+        header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5em;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        header p {
+            font-size: 1.3em;
+            margin-bottom: 30px;
+        }
+
+        header a.cta-button {
+            background-color: var(--primary-color);
+            color: var(--header-text-color);
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1em;
+            transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease;
+            display: inline-block;
+        }
+
+        header a.cta-button:hover {
+            background-color: #276749; /* Darker Sea Green */
+            transform: translateY(-3px);
+        }
+
+        /* Content Sections */
+        .content-section {
+            max-width: var(--max-width);
+            margin: 60px auto;
+            padding: 0 20px;
+            text-align: center;
+            display: none; /* Hidden by default */
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .content-section h2 {
+            color: var(--secondary-color);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.8em;
+            margin-bottom: 20px;
+        }
+
+        .content-section p {
+            color: var(--text-color);
+            font-size: 1.1em;
+            line-height: 1.8em;
+            margin: 10px 0 30px;
+            text-align: left;
+        }
+
+        /* About Us Section */
+        .about-us {
+            max-width: var(--max-width);
+            margin: 40px auto;
+            text-align: center; /* Centers the text within the About Us section */
+        }
+
+        /* Services and Gallery Sections */
+        .services,
+        .gallery-service-areas {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* Centers the service cards */
+            gap: 30px;
+        }
+
+        .services,
+        .gallery-service-areas {
+            gap: 20px;
+        }
+
+        .service-card,
+        .faq-card,
+        .gallery-card,
+        .area-card {
+            background-color: var(--card-background);
+            border: 1px solid var(--secondary-color);
+            border-radius: 10px;
+            padding: 25px;
+            width: 300px;
+            box-shadow: 0 4px 6px var(--shadow-color);
+            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+        }
+
+        .service-card:hover,
+        .faq-card:hover,
+        .gallery-card:hover,
+        .area-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px var(--shadow-color);
+        }
+
+        .service-card h3,
+        .faq-card h3,
+        .gallery-card h3,
+        .area-card h3 {
+            color: var(--secondary-color);
+            font-size: 1.6em;
+            margin-bottom: 15px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .service-card p,
+        .faq-card p,
+        .gallery-card p,
+        .area-card p {
+            color: var(--text-color);
+            font-size: 1em;
+            line-height: 1.6em;
+        }
+
+        /* FAQ Accordion Styles */
+        .faq-card {
+            cursor: pointer;
+            position: relative;
+            padding: 15px 30px; /* Reduced padding for shorter height */
+            background-color: var(--accordion-background);
+            border: 1px solid var(--secondary-color);
+            border-radius: 10px;
+            width: 100%; /* Stretches the FAQ card to full width of its container */
+            max-width: 800px; /* Optional: Set a max-width for better readability on large screens */
+            margin: 10px auto; /* Centers the FAQ box horizontally */
+            text-align: left; /* Aligns text to the left for readability */
+            box-shadow: 0 4px 6px var(--shadow-color);
+            transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Vertically centers content within the box */
+        }
+
+        .faq-card h3 {
+            margin: 0;
+            font-size: 1.4em;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--secondary-color);
+            text-align: left; /* Keeps the title aligned to the left */
+        }
+
+        .faq-answer {
+            display: none;
+            margin-top: 10px;
+            text-align: left; /* Keeps the answer text aligned properly for readability */
+        }
+
+        .faq-card.active .faq-answer {
+            display: block;
+        }
+
+        .faq-card:hover {
+            background-color: var(--accordion-hover);
+            transform: translateY(-2px); /* Adds a subtle hover effect */
+        }
+
+        .faq-card::after {
+            content: '+';
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5em;
+            transition: transform var(--transition-speed) ease;
+        }
+
+        .faq-card.active::after {
+            content: '-';
+        }
+
+        /* Ensure proper centering and responsiveness */
+        .faqs {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px; /* Spacing between FAQ boxes */
+            margin-top: 30px;
+        }
+
+        /* Gallery & Service Areas Combined Section */
+        .gallery-service-areas {
+            max-width: var(--max-width);
+            margin: 40px auto;
+            padding: 0 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .gallery-service-areas .gallery-card,
+        .gallery-service-areas .area-card {
+            width: 45%;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centers the content within gallery and area cards */
+            text-align: center; /* Centers the text within each card */
+        }
+
+        /* Contact Info */
+        .contact-info {
+            max-width: var(--max-width);
+            margin: 20px auto;
+            text-align: center; /* Centers the contact information */
+            padding: 20px;
+            background-color: var(--card-background);
+            border: 1px solid var(--secondary-color);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px var(--shadow-color);
+        }
+
+        .contact-info p {
+            margin: 10px 0;
+            font-size: 1.2em;
+        }
+
+        .contact-info a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: var(--header-text-color);
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: auto; /* Pushes footer to the bottom */
+        }
+
+        footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: color var(--transition-speed) ease;
+        }
+
+        footer a:hover {
+            color: #ffd700; /* Lighter Amber */
+        }
+
+        footer .social-icons {
+            margin: 15px 0;
+        }
+
+        footer .social-icons a {
+            margin: 0 10px;
+            font-size: 1.5em;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            header {
+                padding: 120px 20px;
+            }
+
+            header h1 {
+                font-size: 3em;
+            }
+
+            .content-section h2 {
+                font-size: 2.5em;
+            }
+
+            .service-card,
+            .faq-card,
+            .gallery-card,
+            .area-card {
+                width: 45%;
+            }
+
+            .gallery-service-areas .gallery-card,
+            .gallery-service-areas .area-card {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 100px 20px;
+            }
+
+            header h1 {
+                font-size: 2.5em;
+            }
+
+            .content-section h2 {
+                font-size: 2.2em;
+            }
+
+            .service-card,
+            .faq-card,
+            .gallery-card,
+            .area-card {
+                width: 80%;
+            }
+
+            nav .nav-links {
+                gap: 15px;
+            }
+
+            nav a {
+                font-size: 1em;
+                padding: 5px 10px;
+            }
+
+            footer .social-icons a {
+                font-size: 1.2em;
+            }
+
+            .gallery-service-areas {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .gallery-service-areas .gallery-card,
+            .gallery-service-areas .area-card {
+                width: 80%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 80px 20px;
+            }
+
+            header h1 {
+                font-size: 2em;
+            }
+
+            .content-section h2 {
+                font-size: 2em;
+            }
+
+            .service-card,
+            .faq-card,
+            .gallery-card,
+            .area-card {
+                width: 100%;
+            }
+
+            nav .nav-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            footer .social-icons a {
+                font-size: 1.2em;
+            }
+
+            .gallery-service-areas .gallery-card,
+            .gallery-service-areas .area-card {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-links">
+            <a href="#" class="nav-link active" data-target="home">Home</a>
+            <a href="#" class="nav-link" data-target="services">Our Services</a>
+            <a href="#" class="nav-link" data-target="gallery-service-areas">Gallery & Service Areas</a>
+            <a href="#" class="nav-link" data-target="contact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="content-section active">
+        <header>
+            <h1>Bradley's Lawn Care</h1>
+            <p>Eco-friendly landscaping in Montcalm County</p>
+            <a href="#" class="cta-button" data-target="contact">Get in Touch</a>
+        </header>
+
+        <!-- About Us Content -->
+        <div class="about-us">
+            <h2>About Bradley's Lawn Care</h2>
+            <p>Bradley’s Lawn Care is known for its eco-friendly, quality landscaping that our clients in Montcalm County appreciate and trust. From small neighborhood yards to sprawling lawns on commercial spaces, we approach every project with care and meticulous detail. We believe in building lasting relationships with our clients, getting to know them and their personal style so that we can best bring their vision to life.</p>
+
+            <h2>Our Mission</h2>
+            <p>Our mission is to enhance the beauty of your outdoor spaces while promoting eco-friendly practices. We strive to exceed our clients' expectations through exceptional service, attention to detail, and innovative landscaping solutions.</p>
+        </div>
+
+        <!-- Integrated FAQs -->
+        <h2>Frequently Asked Questions</h2>
+        <div class="faqs">
+            <div class="faq-card">
+                <h3>What areas do you serve?</h3>
+                <div class="faq-answer">
+                    <p>We primarily serve Montcalm County, Emmet County, Ingham County, Lapeer County, and surrounding areas. If you're outside these areas, please contact us to see how we can assist you.</p>
+                </div>
+            </div>
+            <div class="faq-card">
+                <h3>What services do you offer?</h3>
+                <div class="faq-answer">
+                    <p>We offer a wide range of services including seasonal lawn care, grass cutting, leaf raking, garden maintenance, landscape design, and more. Visit our Services section for detailed information.</p>
+                </div>
+            </div>
+            <div class="faq-card">
+                <h3>How can I schedule a service?</h3>
+                <div class="faq-answer">
+                    <p>You can schedule a service by contacting us via phone or email using the information in our Contact section.</p>
+                </div>
+            </div>
+            <div class="faq-card">
+                <h3>What payment methods do you accept?</h3>
+                <div class="faq-answer">
+                    <p>We accept Cash, Check, and CashApp for your convenience.</p>
+                </div>
+            </div>
+            <!-- Add more FAQs as needed -->
+        </div>
+    </section>
+
+    <!-- Our Services Section -->
+    <section id="services" class="content-section">
+        <h2>Our Services</h2>
+        <div class="services">
+            <div class="service-card">
+                <h3>Seasonal Lawn Care</h3>
+                <p>Keep your property during fall/spring in tip-top shape with our Seasonal services. Our team goes in full effort when cleaning, and is ready to provide complete attention to your every need. You can count on us to make sure you’re satisfied with the results.</p>
+            </div>
+            <div class="service-card">
+                <h3>Pricing</h3>
+                <p>• $38 per half acre • $75 per acre</p>
+                <p>(We Accept The Following): Cash, Check, CashApp</p>
+            </div>
+            <div class="service-card">
+                <h3>Leaf Raking</h3>
+                <p>Ensure your lawn is spotless with our thorough leaf raking services. Quality guaranteed!</p>
+            </div>
+            <div class="service-card">
+                <h3>Grass Cutting</h3>
+                <p>Regular grass cutting to keep your lawn healthy and well-manicured all year round.</p>
+            </div>
+            <div class="service-card">
+                <h3>Garden Maintenance</h3>
+                <p>Comprehensive garden care, including pruning, weeding, and soil management to keep your plants thriving.</p>
+            </div>
+            <div class="service-card">
+                <h3>Landscape Design</h3>
+                <p>Custom landscape design services to transform your outdoor space into a beautiful and functional area.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery & Service Areas Combined Section -->
+    <section id="gallery-service-areas" class="content-section">
+        <h2>Gallery & Service Areas</h2>
+        <div class="gallery-service-areas">
+            <!-- Gallery Cards -->
+            <div class="gallery-card">
+                <img src="https://via.placeholder.com/300x200" alt="Residential Lawn Makeover">
+                <h3>Residential Lawn Makeover</h3>
+                <p>Transforming residential yards into lush, green spaces.</p>
+            </div>
+            <div class="gallery-card">
+                <img src="https://via.placeholder.com/300x200" alt="Commercial Landscaping">
+                <h3>Commercial Landscaping</h3>
+                <p>Professional landscaping services for commercial properties.</p>
+            </div>
+            <div class="gallery-card">
+                <img src="https://via.placeholder.com/300x200" alt="Garden Design">
+                <h3>Garden Design</h3>
+                <p>Creating stunning garden layouts tailored to your preferences.</p>
+            </div>
+            <div class="gallery-card">
+                <img src="https://via.placeholder.com/300x200" alt="Seasonal Cleanup">
+                <h3>Seasonal Cleanup</h3>
+                <p>Keeping your outdoor spaces clean and beautiful throughout the seasons.</p>
+            </div>
+
+            <!-- Service Areas Cards -->
+            <div class="area-card">
+                <h3>Montcalm County</h3>
+                <p>Serving the entire Montcalm County with top-notch lawn care and landscaping services.</p>
+            </div>
+            <div class="area-card">
+                <h3>Emmet County</h3>
+                <p>Providing eco-friendly landscaping solutions to homes and businesses in Emmet County.</p>
+            </div>
+            <div class="area-card">
+                <h3>Ingham County</h3>
+                <p>Extending our quality services to Ingham County, ensuring beautiful lawns across the region.</p>
+            </div>
+            <div class="area-card">
+                <h3>Lapeer County</h3>
+                <p>Covering Lapeer County with dedicated and reliable lawn care professionals.</p>
+            </div>
+            <div class="area-card">
+                <h3>Other Surrounding Areas</h3>
+                <p>If you're outside our listed areas, contact us to see how we can assist you with your lawn care needs.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="content-section">
+        <h2>Contact Us</h2>
+        <p>We're here to help you achieve the lawn of your dreams. Whether you have questions about our services, need a quote, or want to schedule an appointment, don't hesitate to reach out!</p>
+
+        <div class="contact-info">
+            <p><strong>Call Us Today:</strong></p>
+            <p><a href="tel:+16163858104">+1 616 385 8104</a></p>
+            <p><strong>Email:</strong> <a href="mailto:info@bradleyslawncare.com">info@bradleyslawncare.com</a></p>
+            <p><strong>Address:</strong> 123 Greenway Drive, Montcalm County, MI 48858</p>
+            <p><em>We're available Monday to Friday, 8 AM to 6 PM.</em></p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p><strong>Contact Us:</strong></p>
+        <p>Phone: <a href="tel:+16163858104">+1 616 385 8104</a></p>
+        <p>Email: <a href="mailto:info@bradleyslawncare.com">info@bradleyslawncare.com</a></p>
+        <div class="social-icons">
+            <a href="https://facebook.com/bradleyslawncare" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://instagram.com/bradleyslawncare" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://twitter.com/bradleyslawncare" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <!-- Add more social icons as needed -->
+        </div>
+        <p>&copy; 2024 Bradley's Lawn Care. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript for Navigation and FAQ Accordion -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('.content-section');
+
+            // Navigation Click Event
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const target = link.getAttribute('data-target');
+
+                    // Hide all sections
+                    sections.forEach(section => {
+                        section.classList.remove('active');
+                    });
+
+                    // Remove active class from all nav links
+                    navLinks.forEach(nav => {
+                        nav.classList.remove('active');
+                    });
+
+                    // Show target section
+                    const targetSection = document.getElementById(target);
+                    if (targetSection) {
+                        targetSection.classList.add('active');
+                    }
+
+                    // Add active class to clicked nav link
+                    link.classList.add('active');
+
+                    // Update URL hash without scrolling
+                    history.pushState(null, null, `#${target}`);
+                });
+            });
+
+            // Handle initial load with hash
+            const initialHash = window.location.hash.substring(1);
+            if (initialHash && document.getElementById(initialHash)) {
+                sections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                document.getElementById(initialHash).classList.add('active');
+
+                navLinks.forEach(nav => {
+                    nav.classList.remove('active');
+                    if (nav.getAttribute('data-target') === initialHash) {
+                        nav.classList.add('active');
+                    }
+                });
+            }
+
+            // FAQ Accordion Functionality
+            const faqCards = document.querySelectorAll('.faq-card');
+
+            faqCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    // Toggle active class
+                    card.classList.toggle('active');
+
+                    // Close other FAQs
+                    faqCards.forEach(otherCard => {
+                        if (otherCard !== card) {
+                            otherCard.classList.remove('active');
+                        }
+                    });
+                });
+            });
+
+            // Highlight active section based on scroll
+            const sectionsList = document.querySelectorAll('section');
+            const navLinksList = document.querySelectorAll('.nav-link');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sectionsList.forEach(section => {
+                    const sectionTop = section.offsetTop - 150;
+                    if (pageYOffset >= sectionTop) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinksList.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('data-target') === current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
